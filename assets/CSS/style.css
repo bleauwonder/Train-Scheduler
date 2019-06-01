@@ -1,0 +1,14 @@
+.jumbotron {
+    background-color: black;
+    color: white;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#add-time {
+    background-color: blueviolet;
+}

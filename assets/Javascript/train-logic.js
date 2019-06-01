@@ -103,5 +103,43 @@
           $("#start-input").val('');
           $("#frequency-input").val('');
     });
-
+    database.ref().on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val());
+      
+        // Store everything into a variable.
+        var trainName = childSnapshot.val().name;
+        var destination = childSnapshot.val().role;
+        var start = childSnapshot.val().start;
+        var frequency = childSnapshot.val().rate;
+      
+        // Employee Info
+        console.log(trainName);
+        console.log(destination);
+        console.log(start);
+        console.log(frequency);
+      
+        // Prettify the employee start
+        var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+      
+        // Calculate the months worked using hardcore math
+        // To calculate the months worked
+        var empMonths = moment().diff(moment(empStart, "X"), "months");
+        console.log(empMonths);
+      
+        // Calculate the total billed rate
+        var empBilled = empMonths * empRate;
+        console.log(empBilled);
+      
+        // Create the new row
+        var newRow = $("<tr>").append(
+          $("<td>").text(trainName),
+          $("<td>").text(destination),
+          $("<td>").text(frequency),
+          $("<td>").text(nextArrival),
+          $("<td>").text(minAway),
+        );
+      
+        // Append the new row to the table
+        $("#train-table > tbody").append(newRow);
+      });
 // });
