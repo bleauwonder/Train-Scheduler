@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Train Scheduler</title>
+  <!-- Bootstrap CSS CDN  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+ 
+</head>
+
+<body>
+
+  <div class="container">
+    <br>
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Goin' on a Train Ride</h1>
+    </div>
+    <div class="row">
+
+      <!-- Sign-Up Card-->
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            What Train?
+          </div>
+          <div class="card-body">
+
+            <!-- Sign-up Form (note the various input "types")-->
+            <form role="form">
+              <div class="form-group">
+                <label for="train-input">Train Name</label>
+                <input class="form-control" id="train-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="destination-input">Going to</label>
+                <input class="form-control" id="destination-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="start-input">First Train Time</label>
+                <input class="form-control" id="start-input" type="time">
+              </div>
+              <div class="form-group">
+                <label for="frequency-input">Frequency (min)</label>
+                <input class="form-control" id="frequency-input" type="time">
+              </div>
+             
+              <button class="btn btn-default" id="add-time" type="button">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+  
+   <!-- Added Moment JS -->
+   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+   <script type="text/javascript" src="assets/javascript/train-logic.js"></script>
+
+</body>
+
+</html>
