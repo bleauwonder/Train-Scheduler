@@ -73,8 +73,7 @@
     console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
     // Next Train
-    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+ 
 
     $("#add-time").on("click", function(event) {
         event.preventDefault();
@@ -103,14 +102,15 @@
           $("#start-input").val('');
           $("#frequency-input").val('');
     });
+
     database.ref().on("child_added", function(childSnapshot) {
         console.log(childSnapshot.val());
       
         // Store everything into a variable.
         var trainName = childSnapshot.val().name;
-        var destination = childSnapshot.val().role;
+        var destination = childSnapshot.val().destination;
         var start = childSnapshot.val().start;
-        var frequency = childSnapshot.val().rate;
+        var frequency = childSnapshot.val().frequency;
       
         // Employee Info
         console.log(trainName);
@@ -119,16 +119,15 @@
         console.log(frequency);
       
         // Prettify the employee start
-        var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+        // var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
       
-        // Calculate the months worked using hardcore math
-        // To calculate the months worked
-        var empMonths = moment().diff(moment(empStart, "X"), "months");
-        console.log(empMonths);
+        // To calculate the next arrival
+        var nextArrival = moment().add(tMinutesTillTrain, "minutes");
+        console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
       
         // Calculate the total billed rate
-        var empBilled = empMonths * empRate;
-        console.log(empBilled);
+        var minAway = start + (currentTime - frequency);
+        console.log(minAway);
       
         // Create the new row
         var newRow = $("<tr>").append(
