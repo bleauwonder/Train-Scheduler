@@ -46,35 +46,19 @@
     firebase.initializeApp(firebaseConfig);
 
     var database = firebase.database();
-    // Assumptions
-    var tFrequency = 3;
+    // // Assumptions
+    // var tFrequency = 3;
 
-    // Time is 3:30 AM
-    var firstTime = "03:30";
+    // // Time is 3:30 AM
+    // var firstTime = "03:30";
 
-    // First Time (pushed back 1 year to make sure it comes before current time)
-    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-    console.log(firstTimeConverted);
+
 
     // Current Time
     var currentTime = moment();
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-    // Difference between the times
-    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
-
-    // Time apart (remainder)
-    var tRemainder = diffTime % tFrequency;
-    console.log(tRemainder);
-
-    // Minute Until Train
-    var tMinutesTillTrain = tFrequency - tRemainder;
-    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
     // Next Train
- 
-
     $("#add-time").on("click", function(event) {
         event.preventDefault();
 
@@ -87,13 +71,13 @@
             name: trainName,
             place: destination,
             start: start,
-            rate: frequency
+            frequency: frequency
           };
         
           database.ref().push(schedule);
 
           console.log(schedule.name);
-          console.log(schedule.destination);
+          console.log(schedule.place);
           console.log(schedule.start);
           console.log(schedule.frequency);
 
@@ -108,7 +92,7 @@
       
         // Store everything into a variable.
         var trainName = childSnapshot.val().name;
-        var destination = childSnapshot.val().destination;
+        var destination = childSnapshot.val().place;
         var start = childSnapshot.val().start;
         var frequency = childSnapshot.val().frequency;
       
@@ -118,15 +102,24 @@
         console.log(start);
         console.log(frequency);
       
-        // Prettify the employee start
-        // var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
-      
+        // First Time (pushed back 1 year to make sure it comes before current time)
+        var start = moment(start, "HH:mm").subtract(1, "years");
+        console.log(start);
+        // Difference between the times
+        var diffTime = moment().diff(moment(start), "minutes");
+        console.log("DIFFERENCE IN TIME: " + diffTime);
+        // Time apart (remainder)
+        var tRemainder = diffTime % frequency;
+        console.log(tRemainder);
+        // Minute Until Train
+        var tMinutesTillTrain = frequency - tRemainder;
+        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
         // To calculate the next arrival
-        var nextArrival = moment().add(tMinutesTillTrain, "minutes");
-        console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
-      
-        // Calculate the total billed rate
-        var minAway = start + (currentTime - frequency);
+        var nextArrival = moment().add(tMinutesTillTrain, "minutes").format("h:mm");
+        console.log("ARRIVAL TIME: " + moment(nextArrival));
+
+        // Calculate how many minutes until arrival
+        var minAway = moment(start, 'HH:mm').add(frequency, 'minutes').format("HH:mm")
         console.log(minAway);
       
         // Create the new row
@@ -135,7 +128,7 @@
           $("<td>").text(destination),
           $("<td>").text(frequency),
           $("<td>").text(nextArrival),
-          $("<td>").text(minAway),
+          $("<td>").text(tMinutesTillTrain),
         );
       
         // Append the new row to the table
