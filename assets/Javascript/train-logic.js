@@ -105,9 +105,11 @@
         // First Time (pushed back 1 year to make sure it comes before current time)
         var start = moment(start, "HH:mm").subtract(1, "years");
         console.log(start);
+
         // Difference between the times
         var diffTime = moment().diff(moment(start), "minutes");
         console.log("DIFFERENCE IN TIME: " + diffTime);
+
         // Time apart (remainder)
         var tRemainder = diffTime % frequency;
         console.log(tRemainder);
@@ -116,11 +118,11 @@
         console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
         // To calculate the next arrival
         var nextArrival = moment().add(tMinutesTillTrain, "minutes").format("h:mm");
-        console.log("ARRIVAL TIME: " + moment(nextArrival));
+        console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
 
         // Calculate how many minutes until arrival
-        var minAway = moment(start, 'HH:mm').add(frequency, 'minutes').format("HH:mm")
-        console.log(minAway);
+        // var minAway = moment(start, 'HH:mm').add(frequency, 'minutes').format("HH:mm")
+        // console.log(minAway);
       
         // Create the new row
         var newRow = $("<tr>").append(

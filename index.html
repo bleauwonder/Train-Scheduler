@@ -6,8 +6,10 @@
   <title>Train Scheduler</title>
   <!-- Bootstrap CSS CDN  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/12441edcb3.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  
  
 </head>
 
@@ -16,11 +18,11 @@
   <div class="container">
     <br>
     <!-- Jumbotron -->
-    <div class="jumbotron">
+    <div class="jumbotron m-1 pt-2 p-1 shadow">
       <h1 class="text-center">Goin' on a Train Ride</h1>
+      <img id="trainSilo" src="assets/trainSilo.png" alt="train engine silohouette" height="150px">
     </div>
   
-
     <div class="row">
       <div class="col-sm-12">
 
@@ -28,7 +30,7 @@
         <div class="card mb-4">
           <div class="card-header">
             <strong>
-            <i class="fas fa-train"></i> Current Train Schedule</strong>
+            <i class="fas fa-train"></i>  Current Train Schedule</strong>
           </div>
         <div class="card-body">
           <table class="table table-sm table-hover" id="train-table">
@@ -48,13 +50,13 @@
         </div>   
       </div>
     </div>
-    <br>
+   
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
             <strong>
-                <i class="fa fa-list-alt"></i>Add Train</strong>
+                <i class="fa fa-sliders-h"></i> Add Train</strong>
         </div>
           <div class="card-body">
             <form role="form">
@@ -81,12 +83,12 @@
         </div>
       </div>
       </div>
+          <br>
 
+      <footer class="page-footer text-white bg-secondary">     
+          <div class="footer-copyright text-center py-3">© Glide the Wave</div>
+      </footer>
 
-
-
-
-  
     <script src="https://code.jquery.com/jquery.js"></script>
    <!-- Added Moment JS -->
    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
