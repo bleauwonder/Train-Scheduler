@@ -1,7 +1,7 @@
 body {
     background-image: url("../topography/topography.png");
     margin: auto;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .jumbotron {
@@ -14,10 +14,10 @@ body {
        -webkit-animation-name: slidein;
        /*for firefox*/
        -moz-animation-duration: 3s;
-       -moz-animation-name: slidein;
+       -moz-animation-name: slidein; 
          /* for opera*/
        -o-animation-duration: 3s;
-       -o-animation-name: slidein;
+       -o-animation-name: slidein; 
          /* Standard syntax*/
        animation-duration: 3s;
        animation-name: slidein;
@@ -68,7 +68,7 @@ body {
             margin-left: 100%;
             width: 100%;
         }
-    }
+    } 
 
 .details {
     display: flex;
