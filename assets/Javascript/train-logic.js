@@ -118,7 +118,7 @@
         console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
         // To calculate the next arrival
         var nextArrival = moment().add(tMinutesTillTrain, "minutes").format("h:mm");
-        console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
+        // console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
 
         // Calculate how many minutes until arrival
         // var minAway = moment(start, 'HH:mm').add(frequency, 'minutes').format("HH:mm")
