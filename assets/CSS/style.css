@@ -1,7 +1,6 @@
 body {
     background-image: url("../topography/topography.png");
     margin: auto;
-    /* overflow: hidden; */
 }
 
 .jumbotron {
@@ -21,7 +20,6 @@ body {
          /* Standard syntax*/
        animation-duration: 3s;
        animation-name: slidein;
-
 }
 
     @-webkit-keyframes slidein {
@@ -32,7 +30,7 @@ body {
 
         to {
             margin-left: 100%;
-            width: 100%;
+            width: 100%;   
         }
     }
 
@@ -68,7 +66,7 @@ body {
             margin-left: 100%;
             width: 100%;
         }
-    } 
+    }
 
 .details {
     display: flex;
